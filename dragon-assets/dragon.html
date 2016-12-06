@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Fight the Dragon!
+	</title>
+</head>
+<body>
+
+	<div id="game">
+
+		<img name = "dragon" src="dragon-assets/dragon.png">
+		<div>You encountered a dragon, do you fight?</div>
+		<img name="hero" src="hero.png"> <!-- go find this -->
+
+		<img name="die1" src="dragon-assets/d1.gif">
+		<img name="die2" src="dragon-assets/d1.gif">
+
+		<input type="button" onclick="rollDice();" value="Roll the Dice!">
+
+		<div id="userRoll">
+			
+		</div>
+
+
+	</div>
+
+	<script type="text/javascript">
+		function rollDice() {
+			// console.log("test");
+			var randomDie1 = Math.ceil(Math.random() * 6);
+			var randomDie2 = Math.ceil(Math.random() * 6);
+
+			console.log(randomDie1);
+			console.log(randomDie2);
+
+			document.images.die1.src = "dragon-assets/d" + randomDie1 + ".gif";
+			document.images.die2.src = "dragon-assets/d" + randomDie2 + ".gif";
+
+
+
+			document.getElementById('userRoll').innerHTML = randomDie1 + randomDie2;
+			// will return the total rolled - can put text in front
+
+			if (randomDie1 + randomDie2 > 8) {
+				// document.images.dragon.src=get an image of a dead dragon to paste here
+			}
+			else {
+				// get image of dead hero to paste here
+			}
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Fight the Dragon!
+	</title>
+</head>
+
+<style type="text/css" media="screen">
+	.Thorin {
+		height: 280px;
+		width: 280px;
+	}
+
+	.dragon {
+		width: 500px;
+	}
+
+	#userRoll {
+		float: left;
+		position: relative;
+		bottom: 35px;
+    	left: 55px;
+    	color: white;
+	}
+
+</style>
+
+
+<body>
+
+	<div id="game">
+
+		<img name="dragon" src="dragon-assets/dragon.png" class="dragon">
+		<div>You encountered a dragon, do you fight?</div>
+		<div>If you fight, you must roll a 9 or higher in order to defeat the dragon, or you will be burned to a crisp!
+			<div id="fight-vs-flee">
+				<input type="button" onclick="rollDice();" value="Fight!">
+				<input type="button" onclick="dragonFlee();" value="Flee!">
+			</div>
+		</div>
+		<div id="herobox">
+			<img name="hero" src="dragon-assets/Thorin.jpg" class="Thorin"> 
+
+			<img name="die1" src="dragon-assets/d1.gif">
+			<img name="die2" src="dragon-assets/d1.gif">
+		</div>
+		<!-- <input type="button" onclick="rollDice();" value="Roll the Dice!"> -->
+
+		<div id="userRoll">
+			
+		</div>
+
+
+	</div>
+
+	<script type="text/javascript">
+		function rollDice() {
+			// console.log("test");
+			var randomDie1 = Math.ceil(Math.random() * 6);
+			var randomDie2 = Math.ceil(Math.random() * 6);
+
+			console.log(randomDie1);
+			console.log(randomDie2);
+
+			document.images.die1.src = "dragon-assets/d" + randomDie1 + ".gif";
+			document.images.die2.src = "dragon-assets/d" + randomDie2 + ".gif";
+
+
+
+			if (randomDie1 + randomDie2 >= 9) {
+				document.getElementById('userRoll').innerHTML = "You rolled: " + (Number(randomDie1 + randomDie2)) + "!  You win!";
+				document.images.dragon.src="dragon-assets/dead-dragon.jpg";
+				document.images.dragon.width="500";
+				document.images.hero.src="dragon-assets/Thorin.jpg";
+			}
+			else {
+				// document.getElementById('userRoll').innerHTML will return the total rolled 
+				document.getElementById('userRoll').innerHTML = "You rolled: " +(Number(randomDie1 + randomDie2))+ "!  The dragon wins!";
+				document.images.hero.src="dragon-assets/Thorin-death.png";
+				document.images.dragon.src="dragon-assets/dragon.png";
+			}
+			document.getElementById('herobox').style.display='block';
+			document.getElementById('userRoll').style.display='block';
+		}
+
+		function dragonFlee() {
+			document.images.dragon.src="dragon-assets/thorin-running.jpg";
+			document.images.dragon.width="500";
+			document.getElementById('herobox').style.display='none';
+			document.getElementById('userRoll').style.display='none';
+
+		}
+
+
+	</script>
+
+</body>
+</html>
